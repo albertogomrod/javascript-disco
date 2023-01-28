@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  background-color: rgb(42, 7, 65);
+}
+
+#pantalla-inicio {
+  display: inline-block;
+  position: relative;
+}
+
+#pantalla-gameover{
+    display: inline-block;
+    position: relative;  
+}
+
+#btn-inicio {
+  background-color: rgb(70,72,175,255);
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+  
+  position: absolute;
+  bottom: 3em;
+  right: 18em;
+  padding: 1em 1.5em;
+}
+
+#btn-reinicio {
+  background-color: rgb(70,72,175,255);
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 3em;
+  right: 18em;
+  padding: 1em 1.5em;
+}
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+#my-canvas {
+  display: none;
+  background-color: rgb(41, 6, 65);
+}
+
+#pantalla-gameover{
+  display: none;
+}

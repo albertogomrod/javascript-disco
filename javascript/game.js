@@ -9,6 +9,8 @@ class Game {
     this.bolasDiscoArr = [];
     this.coctelArr = [];
     this.frames = 1;
+
+    this.gameover = false
   }
 
   //METODOS
@@ -39,6 +41,60 @@ class Game {
     }
   };
 
+  eliminarBolas = () => {
+    if (this.bolasDiscoArr[0].y + this.bolasDiscoArr[0].h > 625) {
+      this.bolasDiscoArr.shift();
+    }
+  };
+
+  eliminarCocteles = () => {
+    if (this.coctelArr[0].y + this.coctelArr[0].h > 625) {
+      this.coctelArr.shift();
+    }
+  };
+
+  colisionBailarinBolas = ()=>{
+    this.bolasDiscoArr.forEach((cadaBola)=>{
+      if (
+        cadaBola.x < this.bailarin.x + this.bailarin.w &&
+        cadaBola.x + cadaBola.w > this.bailarin.x &&
+        cadaBola.y < this.bailarin.y + this.bailarin.h &&
+        cadaBola.h + cadaBola.y > this.bailarin.y
+      ) {
+        console.log("bailarin ha colisionado con bola");
+        this.bolasDiscoArr.shift();
+        //¿¿¿PUNTUACION??
+      } else {
+//BONUS RESTAr PUNTOS????
+      }
+    })
+  }
+
+  colisionBailarinCoctel = ()=>{
+    this.coctelArr.forEach((cadaCoctel)=>{
+      if (
+        cadaCoctel.x < this.bailarin.x + this.bailarin.w &&
+        cadaCoctel.x + cadaCoctel.w > this.bailarin.x &&
+        cadaCoctel.y < this.bailarin.y + this.bailarin.h &&
+        cadaCoctel.h + cadaCoctel.y > this.bailarin.y
+      ) {
+        console.log("bailarin ha colisionado con coctel")
+        ;
+        this.coctelArr.shift()
+        //Gameover
+        this.gameOver()
+      } else {
+        
+      }
+    })
+  }
+
+  gameOver=()=>{
+    this.gameover = true
+    canvas.style.display = "none"
+    pantallaGameoverDOM.style.display= "flex"
+  }
+
   gameLoop = () => {
     this.frames++;
     //1.Limpiar el canvas
@@ -59,6 +115,12 @@ class Game {
       cadaCoctel.moverCoctel();
     });
 
+    this.eliminarBolas()
+    this.eliminarCocteles()
+
+    this.colisionBailarinBolas()
+    this.colisionBailarinCoctel()
+
     //3. Dibujado de los elementos
     this.fondoCanvas();
     this.bailarin.dibujoBailarin();
@@ -72,6 +134,7 @@ class Game {
     });
 
     //4. Recursion y control
-    requestAnimationFrame(this.gameLoop);
+    if (this.gameover === false){
+      requestAnimationFrame(this.gameLoop)};
   };
 }

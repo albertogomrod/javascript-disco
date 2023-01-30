@@ -30,6 +30,7 @@ const inicioJuego = () => {
 //ADDEVENTLISTENERS
 
 inicioBtnDOM.addEventListener("click", inicioJuego);
+reinicioBtnDOM.addEventListener("click", inicioJuego)
 window.addEventListener("keydown", (event) => {
   if (event.code === "ArrowLeft" && game.bailarin.izquierda === true) {
     game.bailarin.movimientoBailarinIzquierda();

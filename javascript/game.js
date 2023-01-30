@@ -4,7 +4,7 @@ class Game {
     this.fondo = new Image();
     this.fondo.src = "../imagenes/bg-game.jpg";
 
-    this.bailarin= new Bailarin();
+    this.bailarin = new Bailarin();
   }
 
   //METODOS
@@ -24,6 +24,7 @@ class Game {
     //2. Movimientos y acciones de los elementos.
     this.bailarin.movimientoBailarinIzquierda();
     this.bailarin.movimientoBailarinDerecha();
+    this.bailarin.paredesBailarin()
     //3. Dibujado de los elementos
     this.fondoCanvas();
     this.bailarin.dibujoBailarin();

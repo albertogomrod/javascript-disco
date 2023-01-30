@@ -31,11 +31,11 @@ const inicioJuego = () => {
 
 inicioBtnDOM.addEventListener("click", inicioJuego);
 window.addEventListener("keydown", (event) => {
-  if (event.code === "ArrowLeft") {
+  if (event.code === "ArrowLeft" && game.bailarin.izquierda === true) {
     game.bailarin.movimientoBailarinIzquierda();
   }
 
-  if (event.code === "ArrowRight") {
+  if (event.code === "ArrowRight" && game.bailarin.derecha === true) {
     game.bailarin.movimientoBailarinDerecha();
   }
 });

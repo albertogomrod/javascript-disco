@@ -7,6 +7,7 @@ class Game {
     this.bailarin = new Bailarin();
 
     this.bolasDiscoArr = [];
+    this.coctelArr = [];
     this.frames = 1;
   }
 
@@ -22,10 +23,19 @@ class Game {
 
   bolasAparecen = () => {
     if (this.bolasDiscoArr.length === 0 || this.frames % 120 === 0) {
-      let randomPosx = Math.random() * 990;
+      let randomPosx = Math.random() * 995;
 
       let bolasCaen = new Bolas(randomPosx);
       this.bolasDiscoArr.push(bolasCaen);
+    }
+  };
+
+  coctelAparece = () => {
+    if (this.coctelArr.length === 0 || this.frames % 165 === 0) {
+      let randomPosx = Math.random() * 995;
+
+      let coctelCae = new Coctel(randomPosx);
+      this.coctelArr.push(coctelCae);
     }
   };
 
@@ -43,12 +53,22 @@ class Game {
     this.bolasDiscoArr.forEach((cadaBola) => {
       cadaBola.moverBolas();
     });
+
+    this.coctelAparece();
+    this.coctelArr.forEach((cadaCoctel) => {
+      cadaCoctel.moverCoctel();
+    });
+
     //3. Dibujado de los elementos
     this.fondoCanvas();
     this.bailarin.dibujoBailarin();
 
     this.bolasDiscoArr.forEach((cadaBola) => {
       cadaBola.dibujoBola();
+    });
+
+    this.coctelArr.forEach((cadaCoctel) => {
+      cadaCoctel.dibujoCoctel();
     });
 
     //4. Recursion y control

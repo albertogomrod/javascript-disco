@@ -2,8 +2,8 @@ class Bolas {
   constructor(xPos) {
     this.x = xPos;
     this.y = 0; 
-    this.w = 70;
-    this.h = 70;
+    this.w = 85;
+    this.h = 85;
 
     this.speed = 2;
     this.image = new Image();

@@ -21,7 +21,7 @@ const inicioJuego = () => {
   pantallaGameoverDOM.style.display = "none";
 
   //2.Crear un juego
-  game= new Game();
+  game = new Game();
 
   //3.Iniciar el game loop
   game.gameLoop();

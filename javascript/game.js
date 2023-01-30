@@ -13,6 +13,8 @@ class Game {
 
     this.gameover = false;
 
+    this.vidas = 2
+
 
 
     
@@ -47,13 +49,13 @@ class Game {
   };
 
   eliminarBolas = () => {
-    if (this.bolasDiscoArr[0].y + this.bolasDiscoArr[0].h > 625) {
+    if (this.bolasDiscoArr[0].y + this.bolasDiscoArr[0].h > 610) {
       this.bolasDiscoArr.shift();
     }
   };
 
   eliminarCocteles = () => {
-    if (this.coctelArr[0].y + this.coctelArr[0].h > 625) {
+    if (this.coctelArr[0].y + this.coctelArr[0].h > 610) {
       this.coctelArr.shift();
     }
   };
@@ -87,7 +89,10 @@ class Game {
         console.log("bailarin ha colisionado con coctel");
         this.coctelArr.shift();
         //Gameover
-        this.gameOver();
+        
+        this.vidas--
+        if (this.vidas <= 0){
+        this.gameOver()};
       } else {
       }
     });

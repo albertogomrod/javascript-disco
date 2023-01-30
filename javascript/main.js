@@ -2,6 +2,8 @@
 const pantallaInicioDOM = document.querySelector("#pantalla-inicio");
 const pantallaGameoverDOM = document.querySelector("#pantalla-gameover");
 const canvas = document.querySelector("#my-canvas");
+const marcadorDOM = document.querySelector("#marcador")
+let scoreDOM = document.querySelector("#score span")
 
 let game;
 
@@ -19,6 +21,8 @@ const inicioJuego = () => {
   pantallaInicioDOM.style.display = "none";
   canvas.style.display = "block";
   pantallaGameoverDOM.style.display = "none";
+  marcadorDOM.style.display = "flex"
+  scoreDOM.innerText= 0
 
   //2.Crear un juego
   game = new Game();
@@ -30,7 +34,7 @@ const inicioJuego = () => {
 //ADDEVENTLISTENERS
 
 inicioBtnDOM.addEventListener("click", inicioJuego);
-reinicioBtnDOM.addEventListener("click", inicioJuego)
+reinicioBtnDOM.addEventListener("click", inicioJuego);
 window.addEventListener("keydown", (event) => {
   if (event.code === "ArrowLeft" && game.bailarin.izquierda === true) {
     game.bailarin.movimientoBailarinIzquierda();

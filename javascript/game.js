@@ -10,7 +10,13 @@ class Game {
     this.coctelArr = [];
     this.frames = 1;
 
-    this.gameover = false
+    this.gameover = false;
+
+    this.score= scoreDOM.innerText
+    this.score= 0
+
+
+    
   }
 
   //METODOS
@@ -24,7 +30,7 @@ class Game {
   };
 
   bolasAparecen = () => {
-    if (this.bolasDiscoArr.length === 0 || this.frames % 120 === 0) {
+    if (this.bolasDiscoArr.length === 0 || this.frames % 240 === 0) {
       let randomPosx = Math.random() * 995;
 
       let bolasCaen = new Bolas(randomPosx);
@@ -33,7 +39,7 @@ class Game {
   };
 
   coctelAparece = () => {
-    if (this.coctelArr.length === 0 || this.frames % 165 === 0) {
+    if (this.coctelArr.length === 0 || this.frames % 60 === 0) {
       let randomPosx = Math.random() * 995;
 
       let coctelCae = new Coctel(randomPosx);
@@ -53,8 +59,8 @@ class Game {
     }
   };
 
-  colisionBailarinBolas = ()=>{
-    this.bolasDiscoArr.forEach((cadaBola)=>{
+  colisionBailarinBolas = () => {
+    this.bolasDiscoArr.forEach((cadaBola) => {
       if (
         cadaBola.x < this.bailarin.x + this.bailarin.w &&
         cadaBola.x + cadaBola.w > this.bailarin.x &&
@@ -64,36 +70,35 @@ class Game {
         console.log("bailarin ha colisionado con bola");
         this.bolasDiscoArr.shift();
         //¿¿¿PUNTUACION??
+        scoreDOM.innerText++
       } else {
-//BONUS RESTAr PUNTOS????
+        //BONUS RESTAr PUNTOS????
       }
-    })
-  }
+    });
+  };
 
-  colisionBailarinCoctel = ()=>{
-    this.coctelArr.forEach((cadaCoctel)=>{
+  colisionBailarinCoctel = () => {
+    this.coctelArr.forEach((cadaCoctel) => {
       if (
         cadaCoctel.x < this.bailarin.x + this.bailarin.w &&
         cadaCoctel.x + cadaCoctel.w > this.bailarin.x &&
         cadaCoctel.y < this.bailarin.y + this.bailarin.h &&
         cadaCoctel.h + cadaCoctel.y > this.bailarin.y
       ) {
-        console.log("bailarin ha colisionado con coctel")
-        ;
-        this.coctelArr.shift()
+        console.log("bailarin ha colisionado con coctel");
+        this.coctelArr.shift();
         //Gameover
-        this.gameOver()
+        this.gameOver();
       } else {
-        
       }
-    })
-  }
+    });
+  };
 
-  gameOver=()=>{
-    this.gameover = true
-    canvas.style.display = "none"
-    pantallaGameoverDOM.style.display= "flex"
-  }
+  gameOver = () => {
+    this.gameover = true;
+    canvas.style.display = "none";
+    pantallaGameoverDOM.style.display = "flex";
+  };
 
   gameLoop = () => {
     this.frames++;
@@ -115,11 +120,11 @@ class Game {
       cadaCoctel.moverCoctel();
     });
 
-    this.eliminarBolas()
-    this.eliminarCocteles()
+    this.eliminarBolas();
+    this.eliminarCocteles();
 
-    this.colisionBailarinBolas()
-    this.colisionBailarinCoctel()
+    this.colisionBailarinBolas();
+    this.colisionBailarinCoctel();
 
     //3. Dibujado de los elementos
     this.fondoCanvas();
@@ -134,7 +139,8 @@ class Game {
     });
 
     //4. Recursion y control
-    if (this.gameover === false){
-      requestAnimationFrame(this.gameLoop)};
+    if (this.gameover === false) {
+      requestAnimationFrame(this.gameLoop);
+    }
   };
 }

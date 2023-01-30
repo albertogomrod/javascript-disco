@@ -39,6 +39,8 @@ body {
   right: 18em;
   padding: 1em 1.5em;
 }
+
+
 .contenedor {
   display: flex;
   flex-direction: column;
@@ -54,4 +56,22 @@ body {
 
 #pantalla-gameover{
   display: none;
+}
+
+
+#marcador{
+  display:none
+}
+
+#marcador {
+  background-color: rgb(70,72,175,255);
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 38.75em;
+  right: 23.75em;
+  padding: 0em 1em;
 }

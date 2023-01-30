@@ -5,6 +5,7 @@ class Game {
     this.fondo.src = "../imagenes/bg-game.jpg";
 
     this.bailarin = new Bailarin();
+    this.coctel = new Coctel()
 
     this.bolasDiscoArr = [];
     this.coctelArr = [];
@@ -12,8 +13,6 @@ class Game {
 
     this.gameover = false;
 
-    this.score= scoreDOM.innerText
-    this.score= 0
 
 
     
@@ -94,6 +93,20 @@ class Game {
     });
   };
 
+  acelerarJuego = ()=>{
+    if (scoreDOM.innerText >=3){
+      //console.log ("Subiendo el ritmo")
+      this.frames ++
+    }
+    if (scoreDOM.innerText >=5){
+      this.frames++
+    }
+
+    if (scoreDOM.innerText >=10){
+      this.frames++
+    }
+  }
+
   gameOver = () => {
     this.gameover = true;
     canvas.style.display = "none";
@@ -125,6 +138,8 @@ class Game {
 
     this.colisionBailarinBolas();
     this.colisionBailarinCoctel();
+
+    this.acelerarJuego()
 
     //3. Dibujado de los elementos
     this.fondoCanvas();

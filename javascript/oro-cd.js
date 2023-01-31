@@ -5,7 +5,7 @@ class Cdoro {
       this.w = 85;
       this.h = 85;
   
-      this.speed = 6;
+      this.speed = 5;
       this.image = new Image();
       this.image.src = "../imagenes/disco-dorado.png";
     }

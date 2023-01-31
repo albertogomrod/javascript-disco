@@ -5,19 +5,17 @@ class Game {
     this.fondo.src = "../imagenes/bg-game.jpg";
 
     this.bailarin = new Bailarin();
-    this.coctel = new Coctel()
+    this.coctel = new Coctel();
+    this.corazon = new Corazon();
 
     this.bolasDiscoArr = [];
     this.coctelArr = [];
+    this.cdArr= []
     this.frames = 1;
 
     this.gameover = false;
 
-    this.vidas = 2
-
-
-
-    
+    this.vidas = 2;
   }
 
   //METODOS
@@ -48,6 +46,15 @@ class Game {
     }
   };
 
+  cdAparece = () => {
+    if (this.cdArr.length === 0 || this.frames % 60 === 0) {
+      let randomPosx = Math.random() * 995;
+
+      let cdCae = new Cdoro (randomPosx);
+      this.cdArr.push(cdCae);
+    }
+  };
+
   eliminarBolas = () => {
     if (this.bolasDiscoArr[0].y + this.bolasDiscoArr[0].h > 610) {
       this.bolasDiscoArr.shift();
@@ -71,7 +78,7 @@ class Game {
         console.log("bailarin ha colisionado con bola");
         this.bolasDiscoArr.shift();
         //¿¿¿PUNTUACION??
-        scoreDOM.innerText++
+        scoreDOM.innerText++;
       } else {
         //BONUS RESTAr PUNTOS????
       }
@@ -89,28 +96,31 @@ class Game {
         console.log("bailarin ha colisionado con coctel");
         this.coctelArr.shift();
         //Gameover
-        
-        this.vidas--
-        if (this.vidas <= 0){
-        this.gameOver()};
+
+        this.vidas--;
+
+        if (this.vidas <= 0) {
+          this.gameOver();
+        }
       } else {
+        
       }
     });
   };
 
-  acelerarJuego = ()=>{
-    if (scoreDOM.innerText >=3){
+  acelerarJuego = () => {
+    if (scoreDOM.innerText >= 3) {
       //console.log ("Subiendo el ritmo")
-      this.frames ++
+      this.frames++;
     }
-    if (scoreDOM.innerText >=5){
-      this.frames++
+    if (scoreDOM.innerText >= 10) {
+      this.frames++;
     }
 
-    if (scoreDOM.innerText >=10){
-      this.frames++
+    if (scoreDOM.innerText >= 20) {
+      this.frames++;
     }
-  }
+  };
 
   gameOver = () => {
     this.gameover = true;
@@ -138,13 +148,18 @@ class Game {
       cadaCoctel.moverCoctel();
     });
 
+    this.cdAparece()
+    this.cdArr.forEach((cadaCd) => {
+      cadaCd.moverCd();
+    });
+
     this.eliminarBolas();
     this.eliminarCocteles();
 
     this.colisionBailarinBolas();
     this.colisionBailarinCoctel();
 
-    this.acelerarJuego()
+    this.acelerarJuego();
 
     //3. Dibujado de los elementos
     this.fondoCanvas();
@@ -157,6 +172,9 @@ class Game {
     this.coctelArr.forEach((cadaCoctel) => {
       cadaCoctel.dibujoCoctel();
     });
+
+    if (this.vidas === 2){
+      this.corazon.dibujoCorazon()}
 
     //4. Recursion y control
     if (this.gameover === false) {

@@ -16,7 +16,14 @@ class Game {
     this.gameover = false;
 
     this.vidas = 2;
+
+    this.musica= new Audio("../Sonidos/dacingqueen-8bit.wav")
+    this.sonidoDerrota = new Audio("../Sonidos/sonido-gameover.wav")
+    this.sonidoBola= new Audio("../Sonidos/sonido-bola.wav")
+    this.sonidoCoctel= new Audio("../Sonidos/coctel-roto.wav")
+    this.sonidoCD= new Audio("../Sonidos/discosonido.wav")
   }
+
 
   //METODOS
 
@@ -30,7 +37,7 @@ class Game {
 
   bolasAparecen = () => {
     if (this.bolasDiscoArr.length === 0 || this.frames % 240 === 0) {
-      let randomPosx = Math.random() * 990;
+      let randomPosx = Math.random() * 985;
 
       let bolasCaen = new Bolas(randomPosx);
       this.bolasDiscoArr.push(bolasCaen);
@@ -39,7 +46,7 @@ class Game {
 
   velocidadCoctelUno = () => {
     if (this.coctelArr.length === 0 || this.frames % 40 === 0) {
-      let randomPosx = Math.random() * 990;
+      let randomPosx = Math.random() * 985;
 
       let coctelCae = new Coctel(randomPosx);
       this.coctelArr.push(coctelCae);
@@ -48,7 +55,7 @@ class Game {
 
   velocidadCoctelDos = () => {
     if (this.frames % 35 === 0) {
-      let randomPosx = Math.random() * 990;
+      let randomPosx = Math.random() * 985;
 
       let coctelCae = new Coctel(randomPosx);
       this.coctelArr.push(coctelCae);
@@ -56,8 +63,8 @@ class Game {
   };
 
   velocidadCoctelTres = () => {
-    if (this.frames % 20 === 0) {
-      let randomPosx = Math.random() * 990;
+    if (this.frames % 30 === 0) {
+      let randomPosx = Math.random() * 985;
 
       let coctelCae = new Coctel(randomPosx);
       this.coctelArr.push(coctelCae);
@@ -66,13 +73,12 @@ class Game {
 
   cdAparece = () => {
     if (this.frames % 480 === 0) {
-      let randomPosx = Math.random() * 990;
+      let randomPosx = Math.random() * 985;
 
       let cdCae = new Cdoro(randomPosx);
       this.cdArr.push(cdCae);
     }
   };
-
 
   eliminarBolas = () => {
     if (this.bolasDiscoArr[0].y + this.bolasDiscoArr[0].h > 610) {
@@ -80,13 +86,11 @@ class Game {
     }
   };
 
-  /*eliminarCocteles = () => {
+  eliminarCocteles = () => {
     if (this.coctelArr[0].y + this.coctelArr[0].h > 610) {
       this.coctelArr.shift();
     }
-  };*/
-
-  
+  };
 
   colisionBailarinBolas = () => {
     this.bolasDiscoArr.forEach((cadaBola) => {
@@ -100,7 +104,7 @@ class Game {
         this.bolasDiscoArr.shift();
         //¿¿¿PUNTUACION??
         scoreDOM.innerText++;
-
+        this.sonidoBola.play()
       } else {
         //BONUS RESTAr PUNTOS????
       }
@@ -120,6 +124,7 @@ class Game {
         //Gameover
 
         this.vidas--;
+        this.sonidoCoctel.play()
 
         if (this.vidas <= 0) {
           this.gameOver();
@@ -139,22 +144,26 @@ class Game {
       ) {
         //console.log("bailarin ha colisionado con cd");
         this.cdArr.shift();
+        this.sonidoCD.play()
 
         scoreDOM.innerText++;
-        this.bailarin.speed++
+        this.bailarin.speed = this.bailarin.speed + 2;
       } else {
       }
     });
   };
 
-
   gameOver = () => {
     this.gameover = true;
     canvas.style.display = "none";
     pantallaGameoverDOM.style.display = "flex";
+    this.musica.pause()
+    this.sonidoDerrota.play()
+
   };
 
   gameLoop = () => {
+    this.musica.play()
     this.frames++;
     //1.Limpiar el canvas
     this.limpiarCanvas();
@@ -169,16 +178,16 @@ class Game {
       cadaBola.moverBolas();
     });
 
-    if (scoreDOM.innerText>=0){
-      this.velocidadCoctelUno()
+    if (scoreDOM.innerText >= 0) {
+      this.velocidadCoctelUno();
     }
 
-    if (scoreDOM.innerText>=7){
-      this.velocidadCoctelDos()
+    if (scoreDOM.innerText >= 7) {
+      this.velocidadCoctelDos();
     }
 
-    if (scoreDOM.innerText>=15){
-      this.velocidadCoctelTres()
+    if (scoreDOM.innerText >= 15) {
+      this.velocidadCoctelTres();
     }
     this.coctelArr.forEach((cadaCoctel) => {
       cadaCoctel.moverCoctel();
@@ -189,15 +198,12 @@ class Game {
       cadaCD.moverCd();
     });
 
-
     this.eliminarBolas();
-    //this.eliminarCocteles();
-    
+    this.eliminarCocteles();
 
     this.colisionBailarinBolas();
     this.colisionBailarinCoctel();
     this.colisionBailarinCD();
-
 
     //3. Dibujado de los elementos
     this.fondoCanvas();

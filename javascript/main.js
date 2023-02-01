@@ -28,6 +28,7 @@ const inicioJuego = () => {
   pauseDOM.style.display = "block";
 
   musica.play()
+  musica.volume = 0.01
 
   //2.Crear un juego
   game = new Game();

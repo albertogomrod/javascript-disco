@@ -123,7 +123,7 @@ class Game {
         //¿¿¿PUNTUACION??
         scoreDOM.innerText++;
         this.sonidoBola.play();
-        this.sonidoBola.volume = 0.1;
+        this.sonidoBola.volume = 0.03;
       } else {
         //BONUS RESTAr PUNTOS????
       }
@@ -144,7 +144,7 @@ class Game {
 
         this.vidas--;
         this.sonidoCoctel.play();
-        this.sonidoCoctel.volume = 0.1;
+        this.sonidoCoctel.volume = 0.03;
 
         if (this.vidas <= 0) {
           this.gameOver();
@@ -165,7 +165,7 @@ class Game {
         //console.log("bailarin ha colisionado con cd");
         this.cdArr.shift();
         this.sonidoCD.play();
-        this.sonidoCD.volume = 0.1;
+        this.sonidoCD.volume = 0.03;
 
         scoreDOM.innerText++;
         this.bailarin.speed = this.bailarin.speed + 2;
@@ -192,7 +192,7 @@ class Game {
         }
 
         this.sonidoVida.play();
-        this.sonidoVida.volume = 0.2;
+        this.sonidoVida.volume = 0.06;
       } else {
       }
     });
@@ -206,7 +206,7 @@ class Game {
 
     musica.pause();
     this.sonidoDerrota.play();
-    this.sonidoDerrota.volume = 0.15;
+    this.sonidoDerrota.volume = 0.05;
   };
 
   gameLoop = () => {

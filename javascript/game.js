@@ -16,11 +16,10 @@ class Game {
     this.frames = 1;
 
     this.gameover = false;
-    this.juegoOn = true
+    this.juegoOn = true;
 
     this.vidas = 2;
 
-    
     this.sonidoDerrota = new Audio("./Sonidos/sonido-gameover.wav");
     this.sonidoBola = new Audio("./Sonidos/sonido-bola.wav");
     this.sonidoCoctel = new Audio("./Sonidos/coctel-roto.wav");
@@ -66,7 +65,7 @@ class Game {
   };
 
   velocidadCoctelTres = () => {
-    if (this.frames % 30 === 0) {
+    if (this.frames % 34 === 0) {
       let randomPosx = Math.random() * 880;
 
       let coctelCae = new Coctel(randomPosx);
@@ -122,6 +121,7 @@ class Game {
         this.bolasDiscoArr.shift();
         //¿¿¿PUNTUACION??
         scoreDOM.innerText++;
+
         this.sonidoBola.play();
         this.sonidoBola.volume = 0.03;
       } else {
@@ -146,6 +146,8 @@ class Game {
         this.sonidoCoctel.play();
         this.sonidoCoctel.volume = 0.03;
 
+        this.bailarin.speed = 45;
+
         if (this.vidas <= 0) {
           this.gameOver();
         }
@@ -168,6 +170,9 @@ class Game {
         this.sonidoCD.volume = 0.03;
 
         scoreDOM.innerText++;
+        scoreDOM.innerText++;
+        scoreDOM.innerText++;
+
         this.bailarin.speed = this.bailarin.speed + 2;
       } else {
       }
@@ -183,7 +188,10 @@ class Game {
         cadaCora.h + cadaCora.y > this.bailarin.y
       ) {
         this.coraArr.shift();
+        this.bailarin.speed = 55;
+
         if (this.vidas === 2) {
+          scoreDOM.innerText++;
           scoreDOM.innerText++;
         }
 
@@ -210,7 +218,6 @@ class Game {
   };
 
   gameLoop = () => {
-    
     this.frames++;
     //1.Limpiar el canvas
     this.limpiarCanvas();
@@ -229,11 +236,11 @@ class Game {
       this.velocidadCoctelUno();
     }
 
-    if (scoreDOM.innerText >= 10) {
+    if (scoreDOM.innerText >= 15) {
       this.velocidadCoctelDos();
     }
 
-    if (scoreDOM.innerText >= 25) {
+    if (scoreDOM.innerText >= 30) {
       this.velocidadCoctelTres();
     }
     this.coctelArr.forEach((cadaCoctel) => {

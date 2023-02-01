@@ -2,8 +2,8 @@ class Cdoro {
     constructor(xPos) {
       this.x = xPos;
       this.y = 0;
-      this.w = 85;
-      this.h = 85;
+      this.w = 75;
+      this.h = 75;
   
       this.speed = 5;
       this.image = new Image();

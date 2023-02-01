@@ -2,8 +2,8 @@ class Corazon {
     constructor() {
       this.x = 20;
       this.y = 15;
-      this.w = 50;
-      this.h = 50;
+      this.w = 40;
+      this.h = 40;
   
       this.image = new Image();
       this.image.src = "./imagenes/corazon-vida.png";

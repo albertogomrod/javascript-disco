@@ -2,8 +2,8 @@ class Coctel {
   constructor(xPos) {
     this.x = xPos;
     this.y = 0;
-    this.w = 55;
-    this.h = 55;
+    this.w = 45;
+    this.h = 45;
 
     this.speed = 5;
     this.image = new Image();

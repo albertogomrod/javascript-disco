@@ -2,9 +2,9 @@ class Bailarin {
   //PROPIEDADES
   constructor() {
     this.x = 100; //Posición en eje X
-    this.y = 450; //Posición en eje Y
-    this.h = 140; //Altura
-    this.w = 100; //Ancho
+    this.y = 400; //Posición en eje Y
+    this.h = 100; //Altura
+    this.w = 80; //Ancho
     this.speed = 55;
     this.image = new Image();
     this.image.src = "./imagenes/bailarinpixelart.png";

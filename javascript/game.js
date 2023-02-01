@@ -36,7 +36,7 @@ class Game {
 
   bolasAparecen = () => {
     if (this.bolasDiscoArr.length === 0 || this.frames % 240 === 0) {
-      let randomPosx = Math.random() * 885;
+      let randomPosx = Math.random() * 880;
 
       let bolasCaen = new Bolas(randomPosx);
       this.bolasDiscoArr.push(bolasCaen);
@@ -45,7 +45,7 @@ class Game {
 
   velocidadCoctelUno = () => {
     if (this.coctelArr.length === 0 || this.frames % 40 === 0) {
-      let randomPosx = Math.random() * 885;
+      let randomPosx = Math.random() * 880;
 
       let coctelCae = new Coctel(randomPosx);
       this.coctelArr.push(coctelCae);
@@ -54,7 +54,7 @@ class Game {
 
   velocidadCoctelDos = () => {
     if (this.frames % 35 === 0) {
-      let randomPosx = Math.random() * 885;
+      let randomPosx = Math.random() * 880;
 
       let coctelCae = new Coctel(randomPosx);
       this.coctelArr.push(coctelCae);
@@ -63,7 +63,7 @@ class Game {
 
   velocidadCoctelTres = () => {
     if (this.frames % 30 === 0) {
-      let randomPosx = Math.random() * 885;
+      let randomPosx = Math.random() * 880;
 
       let coctelCae = new Coctel(randomPosx);
       this.coctelArr.push(coctelCae);
@@ -80,13 +80,13 @@ class Game {
   };
 
   eliminarBolas = () => {
-    if (this.bolasDiscoArr[0].y + this.bolasDiscoArr[0].h > 510) {
+    if (this.bolasDiscoArr[0].y + this.bolasDiscoArr[0].h > 450) {
       this.bolasDiscoArr.shift();
     }
   };
 
   eliminarCocteles = () => {
-    if (this.coctelArr[0].y + this.coctelArr[0].h > 510) {
+    if (this.coctelArr[0].y + this.coctelArr[0].h > 450) {
       this.coctelArr.shift();
     }
   };

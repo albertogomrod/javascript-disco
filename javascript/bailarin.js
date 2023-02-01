@@ -2,7 +2,7 @@ class Bailarin {
   //PROPIEDADES
   constructor() {
     this.x = 100; //Posición en eje X
-    this.y = 400; //Posición en eje Y
+    this.y = 350; //Posición en eje Y
     this.h = 100; //Altura
     this.w = 80; //Ancho
     this.speed = 55;
@@ -36,7 +36,7 @@ class Bailarin {
       this.izquierda = true;
     }
 
-    if (this.x + this.w >= canvas.width) {
+    if (this.x + this.w >= canvas.width - 50) {
       this.derecha = false;
     } else {
       this.derecha = true;

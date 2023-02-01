@@ -11,6 +11,8 @@ class Game {
     this.bolasDiscoArr = [];
     this.coctelArr = [];
     this.cdArr = [];
+    this.coraArr = [];
+
     this.frames = 1;
 
     this.gameover = false;
@@ -79,6 +81,15 @@ class Game {
     }
   };
 
+  coraAparece = () => {
+    if (this.frames % 480 === 0) {
+      let randomPosx = Math.random() * 885;
+
+      let coraCae = new Cora(randomPosx);
+      this.coraArr.push(coraCae);
+    }
+  };
+
   eliminarBolas = () => {
     if (this.bolasDiscoArr[0].y + this.bolasDiscoArr[0].h > 450) {
       this.bolasDiscoArr.shift();
@@ -88,6 +99,12 @@ class Game {
   eliminarCocteles = () => {
     if (this.coctelArr[0].y + this.coctelArr[0].h > 450) {
       this.coctelArr.shift();
+    }
+  };
+
+  eliminarCoras = () => {
+    if (this.coraArr[0].y + this.coraArr[0].h > 450) {
+      this.coraArr.shift();
     }
   };
 
@@ -155,6 +172,28 @@ class Game {
     });
   };
 
+  colisionBailarinCora = () => {
+    this.coraArr.forEach((cadaCora) => {
+      if (
+        cadaCora.x < this.bailarin.x + this.bailarin.w &&
+        cadaCora.x + cadaCora.w > this.bailarin.x &&
+        cadaCora.y < this.bailarin.y + this.bailarin.h &&
+        cadaCora.h + cadaCora.y > this.bailarin.y
+      ) {
+        this.coraArr.shift();
+        if (this.vidas < 2) {
+          this.vidas++;
+        }
+
+        //this.sonidoCD.play();
+        //this.sonidoCD.volume = 0.1;
+
+        //scoreDOM.innerText++;
+      } else {
+      }
+    });
+  };
+
   gameOver = () => {
     this.gameover = true;
     canvas.style.display = "none";
@@ -203,12 +242,18 @@ class Game {
       cadaCD.moverCd();
     });
 
+    this.coraAparece();
+    this.coraArr.forEach((cadaCora) => {
+      cadaCora.moverCora();
+    });
+
     this.eliminarBolas();
     this.eliminarCocteles();
 
     this.colisionBailarinBolas();
     this.colisionBailarinCoctel();
     this.colisionBailarinCD();
+    this.colisionBailarinCora();
 
     //3. Dibujado de los elementos
     this.fondoCanvas();
@@ -224,6 +269,10 @@ class Game {
 
     this.cdArr.forEach((cadaCD) => {
       cadaCD.dibujoCd();
+    });
+
+    this.coraArr.forEach((cadaCora) => {
+      cadaCora.dibujoCora();
     });
 
     if (this.vidas === 2) {

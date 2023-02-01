@@ -17,13 +17,12 @@ class Game {
 
     this.vidas = 2;
 
-    this.musica= new Audio("./Sonidos/dacingqueen-8bit.wav")
-    this.sonidoDerrota = new Audio("./Sonidos/sonido-gameover.wav")
-    this.sonidoBola= new Audio("./Sonidos/sonido-bola.wav")
-    this.sonidoCoctel= new Audio("./Sonidos/coctel-roto.wav")
-    this.sonidoCD= new Audio("./Sonidos/discosonido.wav")
+    this.musica = new Audio("./Sonidos/dacingqueen-8bit.wav");
+    this.sonidoDerrota = new Audio("./Sonidos/sonido-gameover.wav");
+    this.sonidoBola = new Audio("./Sonidos/sonido-bola.wav");
+    this.sonidoCoctel = new Audio("./Sonidos/coctel-roto.wav");
+    this.sonidoCD = new Audio("./Sonidos/discosonido.wav");
   }
-
 
   //METODOS
 
@@ -104,7 +103,8 @@ class Game {
         this.bolasDiscoArr.shift();
         //¿¿¿PUNTUACION??
         scoreDOM.innerText++;
-        this.sonidoBola.play()
+        this.sonidoBola.play();
+        this.sonidoBola.volume = 0.1;
       } else {
         //BONUS RESTAr PUNTOS????
       }
@@ -124,7 +124,8 @@ class Game {
         //Gameover
 
         this.vidas--;
-        this.sonidoCoctel.play()
+        this.sonidoCoctel.play();
+        this.sonidoCoctel.volume = 0.1;
 
         if (this.vidas <= 0) {
           this.gameOver();
@@ -144,7 +145,8 @@ class Game {
       ) {
         //console.log("bailarin ha colisionado con cd");
         this.cdArr.shift();
-        this.sonidoCD.play()
+        this.sonidoCD.play();
+        this.sonidoCD.volume = 0.1;
 
         scoreDOM.innerText++;
         this.bailarin.speed = this.bailarin.speed + 2;
@@ -157,13 +159,16 @@ class Game {
     this.gameover = true;
     canvas.style.display = "none";
     pantallaGameoverDOM.style.display = "flex";
-    this.musica.pause()
-    this.sonidoDerrota.play()
+    pauseDOM.style.display = "none";
 
+    this.musica.pause();
+    this.sonidoDerrota.play();
+    this.sonidoDerrota.volume = 0.15;
   };
 
   gameLoop = () => {
-    this.musica.play()
+    this.musica.play();
+    this.musica.volume = 0.1;
     this.frames++;
     //1.Limpiar el canvas
     this.limpiarCanvas();

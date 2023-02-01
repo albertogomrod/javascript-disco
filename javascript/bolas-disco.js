@@ -7,7 +7,7 @@ class Bolas {
 
     this.speed = 2;
     this.image = new Image();
-    this.image.src = "../imagenes/bola-disco.png";
+    this.image.src = "./imagenes/bola-disco.png";
   }
 
   //Metodos

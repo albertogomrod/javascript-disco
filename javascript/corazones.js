@@ -6,7 +6,7 @@ class Corazon {
       this.h = 50;
   
       this.image = new Image();
-      this.image.src = "../imagenes/corazon-vida.png";
+      this.image.src = "./imagenes/corazon-vida.png";
 
     }
   

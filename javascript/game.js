@@ -2,7 +2,7 @@ class Game {
   //PROPIEDADES
   constructor() {
     this.fondo = new Image();
-    this.fondo.src = "../imagenes/bg-game.jpg";
+    this.fondo.src = "./imagenes/bg-game.jpg";
 
     this.bailarin = new Bailarin();
     this.coctel = new Coctel();
@@ -17,11 +17,11 @@ class Game {
 
     this.vidas = 2;
 
-    this.musica= new Audio("../Sonidos/dacingqueen-8bit.wav")
-    this.sonidoDerrota = new Audio("../Sonidos/sonido-gameover.wav")
-    this.sonidoBola= new Audio("../Sonidos/sonido-bola.wav")
-    this.sonidoCoctel= new Audio("../Sonidos/coctel-roto.wav")
-    this.sonidoCD= new Audio("../Sonidos/discosonido.wav")
+    this.musica= new Audio("./Sonidos/dacingqueen-8bit.wav")
+    this.sonidoDerrota = new Audio("./Sonidos/sonido-gameover.wav")
+    this.sonidoBola= new Audio("./Sonidos/sonido-bola.wav")
+    this.sonidoCoctel= new Audio("./Sonidos/coctel-roto.wav")
+    this.sonidoCD= new Audio("./Sonidos/discosonido.wav")
   }
 
 

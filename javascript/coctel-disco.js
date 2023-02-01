@@ -7,7 +7,7 @@ class Coctel {
 
     this.speed = 5;
     this.image = new Image();
-    this.image.src = "../imagenes/coctel.png";
+    this.image.src = "./imagenes/coctel.png";
   }
 
   //Metodos

@@ -7,7 +7,7 @@ class Bailarin {
     this.w = 100; //Ancho
     this.speed = 55;
     this.image = new Image();
-    this.image.src = "../imagenes/bailarinpixelart.png";
+    this.image.src = "./imagenes/bailarinpixelart.png";
     this.izquierda = true;
     this.derecha = true;
   }

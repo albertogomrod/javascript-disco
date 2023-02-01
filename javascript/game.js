@@ -16,14 +16,16 @@ class Game {
     this.frames = 1;
 
     this.gameover = false;
+    this.juegoOn = true
 
     this.vidas = 2;
 
-    this.musica = new Audio("./Sonidos/dacingqueen-8bit.wav");
+    
     this.sonidoDerrota = new Audio("./Sonidos/sonido-gameover.wav");
     this.sonidoBola = new Audio("./Sonidos/sonido-bola.wav");
     this.sonidoCoctel = new Audio("./Sonidos/coctel-roto.wav");
     this.sonidoCD = new Audio("./Sonidos/discosonido.wav");
+    this.sonidoVida = new Audio("./Sonidos/vida.mp3");
   }
 
   //METODOS
@@ -73,7 +75,7 @@ class Game {
   };
 
   cdAparece = () => {
-    if (this.frames % 480 === 0) {
+    if (this.frames % 540 === 0) {
       let randomPosx = Math.random() * 885;
 
       let cdCae = new Cdoro(randomPosx);
@@ -82,7 +84,7 @@ class Game {
   };
 
   coraAparece = () => {
-    if (this.frames % 480 === 0) {
+    if (this.frames % 540 === 0) {
       let randomPosx = Math.random() * 885;
 
       let coraCae = new Cora(randomPosx);
@@ -181,33 +183,34 @@ class Game {
         cadaCora.h + cadaCora.y > this.bailarin.y
       ) {
         this.coraArr.shift();
+        if (this.vidas === 2) {
+          scoreDOM.innerText++;
+        }
+
         if (this.vidas < 2) {
           this.vidas++;
         }
 
-        //this.sonidoCD.play();
-        //this.sonidoCD.volume = 0.1;
-
-        //scoreDOM.innerText++;
+        this.sonidoVida.play();
+        this.sonidoVida.volume = 0.2;
       } else {
       }
     });
   };
 
   gameOver = () => {
-    this.gameover = true;
+    this.juegoOn = false;
     canvas.style.display = "none";
     pantallaGameoverDOM.style.display = "flex";
     pauseDOM.style.display = "none";
 
-    this.musica.pause();
+    musica.pause();
     this.sonidoDerrota.play();
     this.sonidoDerrota.volume = 0.15;
   };
 
   gameLoop = () => {
-    this.musica.play();
-    this.musica.volume = 0.1;
+    
     this.frames++;
     //1.Limpiar el canvas
     this.limpiarCanvas();
@@ -226,11 +229,11 @@ class Game {
       this.velocidadCoctelUno();
     }
 
-    if (scoreDOM.innerText >= 7) {
+    if (scoreDOM.innerText >= 10) {
       this.velocidadCoctelDos();
     }
 
-    if (scoreDOM.innerText >= 15) {
+    if (scoreDOM.innerText >= 25) {
       this.velocidadCoctelTres();
     }
     this.coctelArr.forEach((cadaCoctel) => {
@@ -280,7 +283,7 @@ class Game {
     }
 
     //4. Recursion y control
-    if (this.gameover === false) {
+    if (this.juegoOn === true) {
       requestAnimationFrame(this.gameLoop);
     }
   };

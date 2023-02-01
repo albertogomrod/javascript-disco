@@ -36,7 +36,7 @@ class Bailarin {
       this.izquierda = true;
     }
 
-    if (this.x + this.w >= canvas.width - 50) {
+    if (this.x + this.w >= canvas.width-15) {
       this.derecha = false;
     } else {
       this.derecha = true;

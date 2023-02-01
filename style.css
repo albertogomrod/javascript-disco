@@ -38,7 +38,7 @@ body {
   border-radius: 10px;
   position: absolute;
   bottom: 3em;
-  right: 17em;
+  right: 16em;
   padding: 1em 1.5em;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -80,6 +80,18 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#div-pause{
+#btn-pausa{
   display: none;
+  background-color: rgb(70,72,175,255);
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 40px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 83%;
+  right: 14%;
+  padding: 1em 1.5em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

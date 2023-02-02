@@ -20,4 +20,5 @@ class Cora{
     moverCora = () => {
         this.y += this.speed;
       };
+
   }

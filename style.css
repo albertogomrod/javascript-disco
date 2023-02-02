@@ -28,6 +28,10 @@ body {
   bottom: 5em;
   right: 18em;
   padding: 1em 1.5em;
+
+    -webkit-animation: 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+            animation: 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  
 }
 
 #btn-reinicio {
@@ -60,7 +64,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px
+  margin: 30px
 }
 
 #pantalla-gameover{

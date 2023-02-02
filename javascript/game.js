@@ -14,6 +14,7 @@ class Game {
     this.cdArr = [];
     this.coraArr = [];
     this.discoScoreArr = [];
+    this.corazonesArr = [];
 
     this.frames = 1;
 
@@ -73,12 +74,13 @@ class Game {
 
       let coctelCae = new Coctel(randomPosx);
       this.coctelArr.push(coctelCae);
+      this.speed = 3.5;
     }
   };
 
   cdAparece = () => {
     if (this.frames % 540 === 0) {
-      let randomPosx = Math.random() * 885;
+      let randomPosx = Math.random() * 880;
 
       let cdCae = new Cdoro(randomPosx);
       this.cdArr.push(cdCae);
@@ -87,47 +89,47 @@ class Game {
 
   coraAparece = () => {
     if (this.frames % 540 === 0) {
-      let randomPosx = Math.random() * 885;
+      let randomPosx = Math.random() * 880;
 
       let coraCae = new Cora(randomPosx);
-      this.coraArr.push(coraCae);
+      this.corazonesArr.push(coraCae);
     }
   };
 
   discoscoreAparece = () => {
     if (this.discos === 1) {
       let xPos = 120;
-      let discoscore = new Discoscore (xPos);
+      let discoscore = new Discoscore(xPos);
       this.discoScoreArr.push(discoscore);
     }
 
     if (this.discos === 2) {
       let xPos = 150;
-      let discoscore = new Discoscore (xPos);
+      let discoscore = new Discoscore(xPos);
       this.discoScoreArr.push(discoscore);
     }
 
     if (this.discos === 3) {
       let xPos = 180;
-      let discoscore = new Discoscore (xPos);
+      let discoscore = new Discoscore(xPos);
       this.discoScoreArr.push(discoscore);
     }
 
     if (this.discos === 4) {
       let xPos = 210;
-      let discoscore = new Discoscore (xPos);
+      let discoscore = new Discoscore(xPos);
       this.discoScoreArr.push(discoscore);
     }
 
     if (this.discos === 5) {
       let xPos = 240;
-      let discoscore = new Discoscore (xPos);
+      let discoscore = new Discoscore(xPos);
       this.discoScoreArr.push(discoscore);
     }
 
     if (this.discos === 6) {
       let xPos = 270;
-      let discoscore = new Discoscore (xPos);
+      let discoscore = new Discoscore(xPos);
       this.discoScoreArr.push(discoscore);
     }
   };
@@ -144,9 +146,15 @@ class Game {
     }
   };
 
-  eliminarCoras = () => {
-    if (this.coraArr[0].y + this.coraArr[0].h > 450) {
-      this.coraArr.shift();
+  eliminarCorazones = () => {
+    if (this.corazonesArr[0].y + this.corazonesArr[0].h > 450) {
+      this.corazonesArr.shift();
+    }
+  };
+
+  eliminarDiscos = () => {
+    if (this.cdArr[0].y + this.cdArr[0].h > 450) {
+      this.cdArr.shift();
     }
   };
 
@@ -222,14 +230,14 @@ class Game {
   };
 
   colisionBailarinCora = () => {
-    this.coraArr.forEach((cadaCora) => {
+    this.corazonesArr.forEach((cadaCora) => {
       if (
         cadaCora.x < this.bailarin.x + this.bailarin.w &&
         cadaCora.x + cadaCora.w > this.bailarin.x &&
         cadaCora.y < this.bailarin.y + this.bailarin.h &&
         cadaCora.h + cadaCora.y > this.bailarin.y
       ) {
-        this.coraArr.shift();
+        this.corazonesArr.shift();
         this.bailarin.speed = 55;
 
         if (this.vidas === 2) {
@@ -286,7 +294,6 @@ class Game {
       this.velocidadCoctelTres();
     }
 
-
     this.coctelArr.forEach((cadaCoctel) => {
       cadaCoctel.moverCoctel();
     });
@@ -297,15 +304,19 @@ class Game {
     });
 
     this.coraAparece();
-    this.coraArr.forEach((cadaCora) => {
+    this.corazonesArr.forEach((cadaCora) => {
       cadaCora.moverCora();
     });
 
     this.discoscoreAparece();
-    
 
     this.eliminarBolas();
     this.eliminarCocteles();
+    if(this.corazonesArr.length>0){
+      //console.log("eliminando corazon")
+      this.eliminarCorazones()};
+      if(this.cdArr.length>0){
+        this.eliminarDiscos()};
 
     this.colisionBailarinBolas();
     this.colisionBailarinCoctel();
@@ -328,7 +339,7 @@ class Game {
       cadaCD.dibujoCd();
     });
 
-    this.coraArr.forEach((cadaCora) => {
+    this.corazonesArr.forEach((cadaCora) => {
       cadaCora.dibujoCora();
     });
 

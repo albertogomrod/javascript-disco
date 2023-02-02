@@ -60,7 +60,7 @@ class Game {
   };
 
   velocidadCoctelDos = () => {
-    if (this.frames % 37 === 0) {
+    if (this.frames % 38 === 0) {
       let randomPosx = Math.random() * 880;
 
       let coctelCae = new Coctel(randomPosx);
@@ -69,7 +69,7 @@ class Game {
   };
 
   velocidadCoctelTres = () => {
-    if (this.frames % 35 === 0) {
+    if (this.frames % 36 === 0) {
       let randomPosx = Math.random() * 880;
 
       let coctelCae = new Coctel(randomPosx);
@@ -79,7 +79,7 @@ class Game {
   };
 
   cdAparece = () => {
-    if (this.frames % 540 === 0) {
+    if (this.frames % 500 === 0) {
       let randomPosx = Math.random() * 880;
 
       let cdCae = new Cdoro(randomPosx);

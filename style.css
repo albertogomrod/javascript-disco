@@ -56,6 +56,11 @@ body {
 #my-canvas {
   display: none;
   background-color: rgb(41, 6, 65);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px
 }
 
 #pantalla-gameover{
@@ -75,8 +80,8 @@ body {
   margin-top: 40px;
   border-radius: 10px;
   position: absolute;
-  bottom: 81%;
-  right: 13%;
+  bottom: 84%;
+  right: 65%;
   padding: 0em 1em;
   font-family: 'Press Start 2P', cursive;
 }
@@ -90,8 +95,8 @@ body {
   margin-top: 40px;
   border-radius: 10px;
   position: absolute;
-  bottom: 83%;
-  right: 12%;
+  bottom: 91%;
+  right: 21%;
   padding: 1em 1.5em;
   font-family: 'Press Start 2P', cursive;
 }

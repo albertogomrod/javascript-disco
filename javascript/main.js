@@ -4,7 +4,8 @@ const pantallaGameoverDOM = document.querySelector("#pantalla-gameover");
 const canvas = document.querySelector("#my-canvas");
 const marcadorDOM = document.querySelector("#marcador");
 let scoreDOM = document.querySelector("#score span");
-let musica = new Audio("./Sonidos/dacingqueen-8bit.wav");
+
+let musica = new Audio("./Sonidos/stayin-alive.mp3");
 
 let game;
 
@@ -27,8 +28,8 @@ const inicioJuego = () => {
   scoreDOM.innerText = 0;
   pauseDOM.style.display = "block";
 
-  musica.play()
-  musica.volume = 0.01
+  musica.play();
+  musica.volume = 0.01;
 
   //2.Crear un juego
   game = new Game();
@@ -52,14 +53,13 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-  pauseDOM.addEventListener("click", () => {
-    if (game.juegoOn === true) {
-      game.juegoOn = false;
-      musica.pause()
-    } else {
-      game.juegoOn = true
-      game.gameLoop()
-      musica.play()
-    }
-  
-  })
+pauseDOM.addEventListener("click", () => {
+  if (game.juegoOn === true) {
+    game.juegoOn = false;
+    musica.pause();
+  } else {
+    game.juegoOn = true;
+    game.gameLoop();
+    musica.play();
+  }
+});

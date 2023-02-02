@@ -7,11 +7,13 @@ class Game {
     this.bailarin = new Bailarin();
     this.coctel = new Coctel();
     this.corazon = new Corazon();
+    this.discoScore = new Discoscore();
 
     this.bolasDiscoArr = [];
     this.coctelArr = [];
     this.cdArr = [];
     this.coraArr = [];
+    this.discoScoreArr = [];
 
     this.frames = 1;
 
@@ -19,6 +21,7 @@ class Game {
     this.juegoOn = true;
 
     this.vidas = 2;
+    this.discos = 0;
 
     this.sonidoDerrota = new Audio("./Sonidos/sonido-gameover.wav");
     this.sonidoBola = new Audio("./Sonidos/sonido-bola.wav");
@@ -56,7 +59,7 @@ class Game {
   };
 
   velocidadCoctelDos = () => {
-    if (this.frames % 35 === 0) {
+    if (this.frames % 37 === 0) {
       let randomPosx = Math.random() * 880;
 
       let coctelCae = new Coctel(randomPosx);
@@ -65,7 +68,7 @@ class Game {
   };
 
   velocidadCoctelTres = () => {
-    if (this.frames % 34 === 0) {
+    if (this.frames % 35 === 0) {
       let randomPosx = Math.random() * 880;
 
       let coctelCae = new Coctel(randomPosx);
@@ -88,6 +91,44 @@ class Game {
 
       let coraCae = new Cora(randomPosx);
       this.coraArr.push(coraCae);
+    }
+  };
+
+  discoscoreAparece = () => {
+    if (this.discos === 1) {
+      let xPos = 120;
+      let discoscore = new Discoscore (xPos);
+      this.discoScoreArr.push(discoscore);
+    }
+
+    if (this.discos === 2) {
+      let xPos = 150;
+      let discoscore = new Discoscore (xPos);
+      this.discoScoreArr.push(discoscore);
+    }
+
+    if (this.discos === 3) {
+      let xPos = 180;
+      let discoscore = new Discoscore (xPos);
+      this.discoScoreArr.push(discoscore);
+    }
+
+    if (this.discos === 4) {
+      let xPos = 210;
+      let discoscore = new Discoscore (xPos);
+      this.discoScoreArr.push(discoscore);
+    }
+
+    if (this.discos === 5) {
+      let xPos = 240;
+      let discoscore = new Discoscore (xPos);
+      this.discoScoreArr.push(discoscore);
+    }
+
+    if (this.discos === 6) {
+      let xPos = 270;
+      let discoscore = new Discoscore (xPos);
+      this.discoScoreArr.push(discoscore);
     }
   };
 
@@ -172,6 +213,7 @@ class Game {
         scoreDOM.innerText++;
         scoreDOM.innerText++;
         scoreDOM.innerText++;
+        this.discos++;
 
         this.bailarin.speed = this.bailarin.speed + 2;
       } else {
@@ -243,6 +285,8 @@ class Game {
     if (scoreDOM.innerText >= 30) {
       this.velocidadCoctelTres();
     }
+
+
     this.coctelArr.forEach((cadaCoctel) => {
       cadaCoctel.moverCoctel();
     });
@@ -256,6 +300,9 @@ class Game {
     this.coraArr.forEach((cadaCora) => {
       cadaCora.moverCora();
     });
+
+    this.discoscoreAparece();
+    
 
     this.eliminarBolas();
     this.eliminarCocteles();
@@ -283,6 +330,10 @@ class Game {
 
     this.coraArr.forEach((cadaCora) => {
       cadaCora.dibujoCora();
+    });
+
+    this.discoScoreArr.forEach((cadaDisco) => {
+      cadaDisco.dibujoDiscoscore();
     });
 
     if (this.vidas === 2) {

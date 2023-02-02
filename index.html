@@ -10,24 +10,22 @@
   <body>
     <div class="contenedor">
       <div id="pantalla-inicio">
-        <img
-          src="./imagenes/jsdisco-logo.jpg"
-          width="900"
-          alt="logo-jsdisco"
-        />
+        <img src="./imagenes/jsdisco-logo.jpg" width="900" alt="logo-jsdisco" />
         <button id="btn-inicio">¡A mover el esqueleto!</button>
       </div>
 
       <canvas id="my-canvas" width="900" height="500"></canvas>
 
-      <div id="pantalla-gameover">
-        <img
-          id="imagen-gameover"
-          src="./imagenes/gameover-logo.jpg"
-          width="900"
-          alt="gameover-logo"
-        />
-        <button id="btn-reinicio">Volver a la pista de baile.</button>
+      <div>
+        <div id="pantalla-gameover">
+          <img
+            id="imagen-gameover"
+            src="./imagenes/gameover-logo.jpg"
+            width="900"
+            alt="gameover-logo"
+          />
+          <button id="btn-reinicio">Volver a la pista de baile.</button>
+        </div>
       </div>
 
       <div id="marcador" class="contenedor">
@@ -36,7 +34,7 @@
     </div>
 
     <div id="pausa" class="contenedor">
-      <button id="btn-pausa" >Pedirle un descanso al DJ.</button>
+      <button id="btn-pausa">Pedirle un descanso al DJ.</button>
     </div>
 
     <script src="./javascript/main.js"></script>
@@ -47,5 +45,6 @@
     <script src="./javascript/vida.js"></script>
     <script src="./javascript/oro-cd.js"></script>
     <script src="./javascript/corazones.js"></script>
+    <script src="./javascript/score-disco.js"></script>
   </body>
 </html>

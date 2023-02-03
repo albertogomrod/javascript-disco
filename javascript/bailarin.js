@@ -1,10 +1,10 @@
 class Bailarin {
   //PROPIEDADES
   constructor() {
-    this.x = 100; //Posición en eje X
-    this.y = 350; //Posición en eje Y
-    this.h = 100; //Altura
-    this.w = 80; //Ancho
+    this.x = 100;
+    this.y = 350;
+    this.h = 100;
+    this.w = 80;
     this.speed = 55;
     this.image = new Image();
     this.image.src = "./imagenes/bailarinpixelart.png";
@@ -18,16 +18,12 @@ class Bailarin {
     ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
   };
 
-  //Que el bailarin se mueva
-
   movimientoBailarinIzquierda = () => {
     this.x -= this.speed;
   };
   movimientoBailarinDerecha = () => {
     this.x += this.speed;
   };
-
-  //Paredes del Bailarin
 
   paredesBailarin = () => {
     if (this.x <= 0) {
@@ -36,7 +32,7 @@ class Bailarin {
       this.izquierda = true;
     }
 
-    if (this.x + this.w >= canvas.width-15) {
+    if (this.x + this.w >= canvas.width - 15) {
       this.derecha = false;
     } else {
       this.derecha = true;

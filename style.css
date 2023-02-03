@@ -30,26 +30,32 @@ body {
   padding: 1em 1.5em;
 }
 
-
-              
-#btn-inicio:hover{
+#btn-inicio:hover {
   animation-name: swing;
-      -webkit-animation-name: swing;
-      -moz-animation-name: swing;
+  -webkit-animation-name: swing;
+  -moz-animation-name: swing;
   animation-duration: 1s;
-      -webkit-animation-duration: 1s;
-      -moz-animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
 }
 
-  @keyframes swing {
-      20% {transform: rotate3d(0, 0, 1, 15deg);}
-      40% {transform: rotate3d(0, 0, 1, -10deg);}
-      60% {transform: rotate3d(0, 0, 1, 5deg);}
-      80% {transform: rotate3d(0, 0, 1, -5deg);}
-      to  {transform: rotate3d(0, 0, 1, 0deg);}
+@keyframes swing {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
   }
-            
-              
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
 
 #btn-reinicio {
   background-color: rgb(70, 72, 175, 255);
@@ -65,22 +71,32 @@ body {
   font-family: "Press Start 2P", cursive;
 }
 
-#btn-reinicio:hover{
+#btn-reinicio:hover {
   animation-name: swing;
-      -webkit-animation-name: swing;
-      -moz-animation-name: swing;
+  -webkit-animation-name: swing;
+  -moz-animation-name: swing;
   animation-duration: 1s;
-      -webkit-animation-duration: 1s;
-      -moz-animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
 }
 
-  @keyframes swing {
-      20% {transform: rotate3d(0, 0, 1, 15deg);}
-      40% {transform: rotate3d(0, 0, 1, -10deg);}
-      60% {transform: rotate3d(0, 0, 1, 5deg);}
-      80% {transform: rotate3d(0, 0, 1, -5deg);}
-      to  {transform: rotate3d(0, 0, 1, 0deg);}
+@keyframes swing {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
   }
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
 
 .contenedor {
   display: flex;
@@ -115,7 +131,7 @@ body {
   margin-top: 40px;
   border-radius: 10px;
   position: absolute;
-  bottom: 82%;
+  bottom: 83%;
   right: 62%;
   padding: 0em 1em;
   font-family: "Press Start 2P", cursive;
@@ -135,15 +151,14 @@ body {
   padding: 1em 1.5em;
   font-family: "Press Start 2P", cursive;
 
-  transition: .5s, color .10s;
-  -webkit-transition: .5s, color .10s;
-  -moz-transition: .5s, color .10s;
-            
+  transition: 0.5s, color 0.1s;
+  -webkit-transition: 0.5s, color 0.1s;
+  -moz-transition: 0.5s, color 0.1s;
 }
 
-#btn-pausa:hover{
-  box-shadow: 0 8px 8px 0 #000000,0 8px 8px 0 #000000;
-  transform: translate(0px,5px);
-  -webkit-transform: translate(0px,5px);
-  -moz-transform:translate(0px,5px);
+#btn-pausa:hover {
+  box-shadow: 0 8px 8px 0 #000000, 0 8px 8px 0 #000000;
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  -moz-transform: translate(0px, 5px);
 }

@@ -18,9 +18,6 @@ const ctx = canvas.getContext("2d");
 // MANEJO DE ESTADO FUNCIONES
 
 const inicioJuego = () => {
-  //console.log("Intentando iniciar el juego");
-
-  //1.Cambiar pantalla
   pantallaInicioDOM.style.display = "none";
   canvas.style.display = "block";
   pantallaGameoverDOM.style.display = "none";
@@ -31,10 +28,8 @@ const inicioJuego = () => {
   musica.play();
   musica.volume = 0.01;
 
-  //2.Crear un juego
   game = new Game();
 
-  //3.Iniciar el game loop
   game.gameLoop();
 };
 

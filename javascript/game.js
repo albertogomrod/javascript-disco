@@ -166,15 +166,15 @@ class Game {
         cadaBola.y < this.bailarin.y + this.bailarin.h &&
         cadaBola.h + cadaBola.y > this.bailarin.y
       ) {
-        //console.log("bailarin ha colisionado con bola");
+        
         this.bolasDiscoArr.shift();
-        //¿¿¿PUNTUACION??
+        
         scoreDOM.innerText++;
 
         this.sonidoBola.play();
         this.sonidoBola.volume = 0.03;
       } else {
-        //BONUS RESTAr PUNTOS????
+      
       }
     });
   };
@@ -187,9 +187,9 @@ class Game {
         cadaCoctel.y < this.bailarin.y + this.bailarin.h &&
         cadaCoctel.h + cadaCoctel.y > this.bailarin.y
       ) {
-        //console.log("bailarin ha colisionado con coctel");
+        
         this.coctelArr.shift();
-        //Gameover
+        
 
         this.vidas--;
         this.sonidoCoctel.play();
@@ -213,7 +213,7 @@ class Game {
         cadaCD.y < this.bailarin.y + this.bailarin.h &&
         cadaCD.h + cadaCD.y > this.bailarin.y
       ) {
-        //console.log("bailarin ha colisionado con cd");
+        
         this.cdArr.shift();
         this.sonidoCD.play();
         this.sonidoCD.volume = 0.03;
@@ -269,10 +269,10 @@ class Game {
 
   gameLoop = () => {
     this.frames++;
-    //1.Limpiar el canvas
+
     this.limpiarCanvas();
 
-    //2. Movimientos y acciones de los elementos.
+    // Movimientos y acciones de los elementos.
     this.bailarin.movimientoBailarinIzquierda();
     this.bailarin.movimientoBailarinDerecha();
     this.bailarin.paredesBailarin();
@@ -312,18 +312,20 @@ class Game {
 
     this.eliminarBolas();
     this.eliminarCocteles();
-    if(this.corazonesArr.length>0){
-      //console.log("eliminando corazon")
-      this.eliminarCorazones()};
-      if(this.cdArr.length>0){
-        this.eliminarDiscos()};
+    if (this.corazonesArr.length > 0) {
+      
+      this.eliminarCorazones();
+    }
+    if (this.cdArr.length > 0) {
+      this.eliminarDiscos();
+    }
 
     this.colisionBailarinBolas();
     this.colisionBailarinCoctel();
     this.colisionBailarinCD();
     this.colisionBailarinCora();
 
-    //3. Dibujado de los elementos
+    // Dibujado de los elementos
     this.fondoCanvas();
     this.bailarin.dibujoBailarin();
 
@@ -351,7 +353,7 @@ class Game {
       this.corazon.dibujoCorazon();
     }
 
-    //4. Recursion y control
+    // Recursion y control
     if (this.juegoOn === true) {
       requestAnimationFrame(this.gameLoop);
     }
